@@ -9,7 +9,7 @@ You can also include images in this folder and reference them in the markdown. E
 
 ## How it works
 
-Explain how your project works
+`flashrom` (PC application) control an SPI flash chip through a programmer such as a MCU. `flashrom` sends commands over USB/serial using the Serprog protocol, and the programmer converts them into SPI signals to read, erase, or write the chip.
 
 ## How to test
 
@@ -17,4 +17,4 @@ Explain how to use your project
 
 ## External hardware
 
-List external hardware used in your project (e.g. PMOD, LED display, etc), if any
+An 8-pin SPI Flash.
