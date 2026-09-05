@@ -1,4 +1,4 @@
-`timescale 1ns/1ps
+`default_nettype none
 
 module spi_byte_engine #(
     parameter integer CLKS_PER_HALF_BIT = 12

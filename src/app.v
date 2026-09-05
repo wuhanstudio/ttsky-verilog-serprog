@@ -1,4 +1,4 @@
-`timescale 1ns/1ps
+`default_nettype none
 
 module app #(
     parameter integer CLKS_PER_BIT = 208,
