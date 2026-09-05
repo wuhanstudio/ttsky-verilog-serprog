@@ -22,7 +22,7 @@ module spi_byte_engine #(
     reg [7:0] tx_shift;
     reg [7:0] rx_shift;
     reg [2:0] bit_index;
-    reg [15:0] clk_count;
+    reg [31:0] clk_count;
 
     always @(posedge clk) begin
         if (rst) begin
@@ -31,7 +31,7 @@ module spi_byte_engine #(
             rx_shift <= 8'd0;
             rx_byte <= 8'd0;
             bit_index <= 3'd7;
-            clk_count <= 16'd0;
+            clk_count <= 32'd0;
             busy <= 1'b0;
             done <= 1'b0;
             sck <= 1'b0;
@@ -49,7 +49,7 @@ module spi_byte_engine #(
                         tx_shift <= tx_byte;
                         rx_shift <= 8'd0;
                         bit_index <= 3'd7;
-                        clk_count <= 16'd0;
+                        clk_count <= 32'd0;
                         mosi <= tx_byte[7];
                         state <= ST_CLK_HI;
                     end
@@ -57,9 +57,9 @@ module spi_byte_engine #(
 
                 ST_CLK_HI: begin
                     if (clk_count < CLKS_PER_HALF_BIT - 1) begin
-                        clk_count <= clk_count + 16'd1;
+                        clk_count <= clk_count + 32'd1;
                     end else begin
-                        clk_count <= 16'd0;
+                        clk_count <= 32'd0;
                         sck <= 1'b1;
                         rx_shift[bit_index] <= miso;
                         state <= ST_CLK_LO;
@@ -68,9 +68,9 @@ module spi_byte_engine #(
 
                 ST_CLK_LO: begin
                     if (clk_count < CLKS_PER_HALF_BIT - 1) begin
-                        clk_count <= clk_count + 16'd1;
+                        clk_count <= clk_count + 32'd1;
                     end else begin
-                        clk_count <= 16'd0;
+                        clk_count <= 32'd0;
                         sck <= 1'b0;
 
                         if (bit_index == 3'd0) begin

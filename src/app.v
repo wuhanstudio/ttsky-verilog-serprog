@@ -386,7 +386,7 @@ module app #(
                     end
 
                     ST_WAIT_EXTRA: begin
-                        cmd_buffer[extra_index] <= rx_data;
+                        cmd_buffer[extra_index[3:0]] <= rx_data;
                         if (extra_index == extra_count - 8'd1) begin
                             case (current_cmd)
                                 S_S_BUSTYPE: begin
