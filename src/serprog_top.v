@@ -1,7 +1,7 @@
 `timescale 1ns/1ps
 `default_nettype none
 
-module serprog_top #(
+module tt_um_serprog_top #(
     parameter integer CLK_FREQ_HZ = 24000000,
     parameter integer BAUD_RATE   = 115200,
     parameter integer RESET_CYCLES = 100000
