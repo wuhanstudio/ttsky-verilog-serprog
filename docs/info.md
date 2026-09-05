@@ -13,7 +13,7 @@ You can also include images in this folder and reference them in the markdown. E
 
 ## How to test
 
-Explain how to use your project
+Run `flashrom -p serprog:dev=/dev/ttyACM0:115200 -r flash_backup.bin`
 
 ## External hardware
 
